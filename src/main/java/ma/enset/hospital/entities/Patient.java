@@ -1,26 +1,25 @@
 package ma.enset.hospital.entities;
 
-import jakarta.persistence.*;
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.mapping.Collection;
 
 import java.util.Date;
-
 @Entity
-@Data
-@NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor
+@AllArgsConstructor @Builder
 public class Patient {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
-    @Temporal(TemporalType.DATE)
     private Date dateNaissance;
     private boolean malade;
-    @OneToMany(mappedBy = "patient", fetch git =FetchType.LAZY)
-
-    private Collection<RendezVous> rendezVous;
-
+    private int score;
 }
